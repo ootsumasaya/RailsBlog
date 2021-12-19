@@ -1,5 +1,6 @@
 <h1>Twitter Coffee Images</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+<h3>残り検索可能回数：<%= @search_limit_remaining %> ×100ツイート</h3>
+<h3>検索可能回数リセット時間：<%= @search_limit_reset %></h3>
 <div class="container">
   <% @tweets.each do |tweet| %>
       <% if tweet.media?%>
