@@ -1,5 +1,7 @@
 
 class WelcomeController < ApplicationController
+  http_basic_authenticate_with name: "uec", password: "karate"
+
   def index
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV["TWITTER_API_KEY"]
@@ -9,6 +11,6 @@ class WelcomeController < ApplicationController
     end
 
     @trends = client.trends
-    @tweets= client.search("coffee",result_type: "recent",exclude: "retweets").take(500)
+    @tweets = client.search("coffee",result_type: "recent",exclude: "retweets").take(500)
   end
 end
