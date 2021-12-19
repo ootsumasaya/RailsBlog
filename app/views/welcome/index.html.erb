@@ -1,0 +1,13 @@
+<h1>Twitter Coffee Images</h1>
+<%= link_to 'My Blog', controller: 'articles' %>
+<div class="container">
+  <% @tweets.each do |tweet| %>
+      <% if tweet.media?%>
+        <% tweet.media.each do |media| %>
+          <% if media.instance_of?(Twitter::Media::Photo) %>
+            <div><%= link_to image_tag(media.media_url_https.to_s, size:'150x150'), media.media_url_https.to_s %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
+</div>
